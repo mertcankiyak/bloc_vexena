@@ -8,6 +8,7 @@ class PhotoView extends StatelessWidget {
   PhotoService _photoService = PhotoService();
   @override
   Widget build(BuildContext context) {
+    debugPrint("state değişti");
     return BlocProvider(
         create: (context) => PhotoCubit(photoService: _photoService),
         child: BlocConsumer<PhotoCubit, PhotoState>(
@@ -70,18 +71,13 @@ class PhotoView extends StatelessWidget {
   }
 
   Widget _buildElevatedButton(BuildContext context) {
-    return BlocConsumer<PhotoCubit, PhotoState>(
-      listener: (context, state) {},
-      builder: (context, state) {
-        return ElevatedButton(
-          style: ButtonStyle(
-            backgroundColor: MaterialStateProperty.all(Colors.indigo),
-          ),
-          child: Text("Fetch Data"),
-          onPressed: () {
-            context.read<PhotoCubit>().fetchPhotos();
-          },
-        );
+    return ElevatedButton(
+      style: ButtonStyle(
+        backgroundColor: MaterialStateProperty.all(Colors.indigo),
+      ),
+      child: Text("Fetch Data"),
+      onPressed: () {
+        context.read<PhotoCubit>().fetchPhotos();
       },
     );
   }
