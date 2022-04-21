@@ -8,7 +8,6 @@ class PhotoView extends StatelessWidget {
   PhotoService _photoService = PhotoService();
   @override
   Widget build(BuildContext context) {
-    debugPrint("state değişti");
     return BlocProvider(
         create: (context) => PhotoCubit(photoService: _photoService),
         child: BlocConsumer<PhotoCubit, PhotoState>(
